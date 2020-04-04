@@ -1,0 +1,14 @@
+Node Name
+Kernel Ver
+kernel-release
+DATA
+Day of Week
+Month
+Day
+Time
+Time Zone
+Year
+hardware-platform
+Architecture
+DATA
+OS Version
