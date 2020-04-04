@@ -5,6 +5,7 @@ Things to Share
 (subject to the GNU GPL)
 
 I'm good if you have suggestions - especially if it makes the programs run faster or more elegantly.
+
 (My ego is used to being knocked down - I'm married.)
  
  
