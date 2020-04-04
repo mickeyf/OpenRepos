@@ -3,11 +3,17 @@ Things to Share
 
 # If you see somethign here you like, feel free to use it
 (subject to the GNU GPL)
-I'm good if you have suggestions - especially if it makes the programs run faster or more leegantly. My ego is used to being knocked down - I'm married.
 
-
-
-
+I'm good if you have suggestions - especially if it makes the programs run faster or more elegantly.
+(My ego is used to being knocked down - I'm married.)
+ 
+ 
+ 
+ 
+  
+   
+    
+    
 # Copyright Info
 All Programs in this Repository are Copyright (C) 2020 Mickey Fox
 
