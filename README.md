@@ -1,7 +1,7 @@
 # OpenRepos
 Things to Share
 
-# If you see somethign here you like, feel free to use it
+# If you see something here you like, feel free to use it
 (subject to the GNU GPL)
 
 I'm good if you have suggestions - especially if it makes the programs run faster or more elegantly.
