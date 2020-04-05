@@ -1,14 +1,14 @@
 Node Name
-Kernel Ver
-kernel-release
+Kernel Release
+Kernel Version
 DATA
-Day of Week
-Month
-Day
-Time
-Time Zone
-Year
-hardware-platform
-Architecture
-DATA
-OS Version
+Ver DayOfWeek
+Version Month
+Version Day
+Version Time
+Ver Time Zone
+Version Year
+Machine
+Processor
+Hardware Platform
+Operating System
