@@ -24,11 +24,19 @@ lenFile=$(wc -l workingWithUnameTxtFile.txt | awk '{ print $1 }')
 
 printf '%s\n' \
 '' \
-'****************************************' \
+'********************************************************' \
 "Program Name: $0" \
 'uname formatted output using sed and awk' \
-'****************************************' \
-''
+'combining output with file input and other little tricks' \
+'********************************************************' \
+'' \
+"$(uname --version | sed -n '1 p' | awk 'BEGIN{print "Using \"uname\" command. \"uname\" version info:"}; {print}; END{print "\nBegin Formatted Output:\n\n"}')" \
+'_______________________' ''
+
+# Above is a nice little trick with sed and awk - we're going to print the
+# first line of uname --version, and format it with an awk header and footer
+# and then output it using the printf command.
+
 for (( c=1; c<=$lenFile; c++ ))
 do
 
@@ -36,5 +44,3 @@ y=$(sed -n "${c} p" workingWithUnameTxtFile.txt)':';
 line=$(printf '%-20s' "$y")
 printf "$line %s\n" ${uname_array[c]} #$line
 done
-
-#printf '%s\t %s\n' ${uname_array[c]} $(sed -n "${c}p" workingWithUnameTxtFile.txt | awk '{print $1}')
