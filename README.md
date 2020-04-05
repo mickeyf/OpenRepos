@@ -1,5 +1,5 @@
 # OpenRepos
-Things to Share
+My Open Repository of Things to Share
 
 # If you see something here you like, feel free to use it
 (subject to the GNU GPL)
