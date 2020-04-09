@@ -4,7 +4,7 @@ My Open Repository of Things to Share
 <br><br>
  
 - Test whether an argument has been sent to the script:<br>
- <color="red">elegantTestWhetherArgExists.sh</color>
+ <font color="red">elegantTestWhetherArgExists.sh</font>
  
 - Check to see whether we have updates (and security updates) available:<br>
 (yeah, I know apt does this and drops it into the motd, but what if I want to check what's currently there for some reason?)
