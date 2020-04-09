@@ -1,12 +1,7 @@
 # OpenRepos
 My Open Repository of Things to Share
-
-# If you see something here you like, feel free to use it
-(subject to the GNU GPL)
-
-I'm good if you have suggestions - especially if it makes the programs run faster or more elegantly.
-
-(My ego is used to being knocked down - I'm married.)
+<hr>
+<br><br>
  
 - Test whether an argument has been sent to the script:<br>
  elegantTestWhetherArgExists.sh
@@ -17,8 +12,18 @@ aptListNumberPackagesUpgradeable.sh
   
  - Pull uname data, format it, and use lables from a file:<br>
  workingWithUname.sh
+# If you see something here you like, feel free to use it
+(subject to the GNU GPL)
 
-    
+I'm good if you have suggestions - especially if it makes the programs run faster or more elegantly.
+
+(My ego is used to being knocked down - I'm married.)
+# If you see something here you like, feel free to use it
+(subject to the GNU GPL)
+
+I'm good if you have suggestions - especially if it makes the programs run faster or more elegantly.
+
+(My ego is used to being knocked down - I'm married.)    
 <br><br><br><br>    
 # Copyright Info
 All Programs in this Repository are Copyright (C) 2020 Mickey Fox
