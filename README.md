@@ -11,15 +11,15 @@ I'm good if you have suggestions - especially if it makes the programs run faste
 - Test whether an argument has been sent to the script:<br>
  elegantTestWhetherArgExists.sh
  
-- Check to see whether we have updates (and security updates) available:
+- Check to see whether we have updates (and security updates) available:<br>
 (yeah, I know apt does this and drops it into the motd, but what if I want to check what's currently there for some reason?)
 aptListNumberPackagesUpgradeable.sh
   
- - Pull uname data, format it, and use lables from a file:
+ - Pull uname data, format it, and use lables from a file:<br>
  workingWithUname.sh
 
     
-    
+<br><br><br><br>    
 # Copyright Info
 All Programs in this Repository are Copyright (C) 2020 Mickey Fox
 
