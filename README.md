@@ -18,7 +18,6 @@ aptListNumberPackagesUpgradeable.sh
 I'm good if you have suggestions - especially if it makes the programs run faster or more elegantly.
 
 (My ego is used to being knocked down - I'm married.)
- 
 <br><br><br><br>    
 ###### Copyright Info
 All Programs in this Repository are Copyright (C) 2020 Mickey Fox
