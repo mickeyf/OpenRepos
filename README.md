@@ -8,11 +8,16 @@ I'm good if you have suggestions - especially if it makes the programs run faste
 
 (My ego is used to being knocked down - I'm married.)
  
+- Test whether an argument has been sent to the script:
+ elegantTestWhetherArgExists.sh
  
- 
- 
+- Check to see whether we have updates (and security updates) available:
+(yeah, I know apt does this and drops it into the motd, but what if I want to check what's currently there for some reason?)
+aptListNumberPackagesUpgradeable.sh
   
-   
+ - Pull uname data, format it, and use lables from a file:
+ workingWithUname.sh
+
     
     
 # Copyright Info
