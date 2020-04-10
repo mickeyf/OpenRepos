@@ -23,7 +23,10 @@
 # to problems. We can, instead of assuming, test to see exactly which interface the traffic bound for
 # a specific destination is taking.
 
-nicAddress=$( ip route get $(getent ahosts "8.8.8.8" | awk '{print $1; exit}') | grep -Po '(?<=(dev )).*(?= src| proto)' )
+# figure out which host we want to "reach"
+read -p 'what host do you want to access? (IP address or domain name)' host
+
+nicAddress=$( ip route get $(getent ahosts $host | awk '{print $1; exit}') | grep -Po '(?<=(dev )).*(?= src| proto)' )
 
 # Once we have determined which interface we are using to access that network, we will then pull our
 # IP and netmask.
