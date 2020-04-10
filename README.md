@@ -3,15 +3,21 @@ My Open Repository of Things to Share
 <hr>
 <br><br>
  
+- When we have multiple network interfaces, how we quickly determine (1) what interface we 
+  are using to reach the internet (or that network), (2) what the IP address is for that interface,
+  and (3) what our subnet masking is, using the fewest lines of code possible?
+  determineHowWeReachedInternet.sh
+  
 - Test whether an argument has been sent to the script:<br>
- elegantTestWhetherArgExists.sh
+  elegantTestWhetherArgExists.sh
  
 - Check to see whether we have updates (and security updates) available:<br>
-(yeah, I know apt does this and drops it into the motd, but what if I want to check what's currently there for some reason?)
-aptListNumberPackagesUpgradeable.sh
+  (yeah, I know apt does this and drops it into the motd, but what if I want to check what's currently there for some reason?)
+  aptListNumberPackagesUpgradeable.sh
   
  - Pull uname data, format it, and use lables from a file:<br>
- workingWithUname.sh
+   workingWithUname.sh
+<br><br><br><br>
 ##### If you see something here you like, feel free to use it
 (subject to the GNU GPL)
 
