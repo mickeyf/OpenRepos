@@ -26,7 +26,17 @@
 # figure out which host we want to "reach"
 read -p 'what host do you want to access? (IP address or domain name)' host
 
+# get the ip of that host (works with dns and /etc/hosts. In case we get
+# multiple IP addresses, we just want one of them
+# i.e. getent ahosts "$host" | awk '{print $1; exit}'
+
+# only list the interface used to reach a specific host/IP. We only want the part
+# between dev and src (use grep for that)
+# ip route get "$host_ip" | grep -Po '(?<=(dev )).*(?= src| proto)'
+
 nicAddress=$( ip route get $(getent ahosts $host | awk '{print $1; exit}') | grep -Po '(?<=(dev )).*(?= src| proto)' )
+
+defaultGateway=$( ip route get $(getent ahosts $host | awk '{print $1; exit}') | cut -d ' ' -f 3 )
 
 # Once we have determined which interface we are using to access that network, we will then pull our
 # IP and netmask.
@@ -37,4 +47,7 @@ whackMask=$(echo $tempIP | cut -d ' ' -f 2)
 
 # And, now we can print it out in a pretty format:
 
-printf '%s %s\n' 'We are reaching the internet via interface' $nicAddress 'using network IP ' $ipAddress 'and /'$whackMask' masking.'
+printf '%s %s\n' 'We are reaching the internet via interface' $nicAddress \
+'using network IP ' $ipAddress \
+'and /'$whackMask' masking.' '' \
+'via default gateway ' $defaultGateway
