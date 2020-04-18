@@ -2,14 +2,14 @@
 My Open Repository of Things to Share
 <hr>
 <br><br>
+  
 - Dealing with Unraid, trying to set up a share for use with a VM is easy. And I show you how:<br>
   How_To_Set_Up_Shared_Drive_UNRAID
   
 - When we have multiple network interfaces, how we quickly determine (1) what interface we 
   are using to reach the internet (or that network), (2) what the IP address is for that interface,
   and (3) what our subnet masking is, using the fewest lines of code possible?<br>
-  determineHowWeReachedInternet.sh
-- tt  
+  determineHowWeReachedInternet.sh  
   
 - Test whether an argument has been sent to the script:<br>
   elegantTestWhetherArgExists.sh
