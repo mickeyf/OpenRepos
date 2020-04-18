@@ -1,0 +1,152 @@
+# Copyright (C) 2020 Mickey Fox
+# mike@cmkconsulting.com
+
+# How_To_Set_Up_Shared_Drive_UNRAID
+
+WARNING: WHENEVER YOU MAKE CHANGES TO FILESYSTEMS ALWAYS, ALWAYS, ALWAYS
+BACK UP YOUR FILES BEFORE CHANGING ANYTHING. Trust me, I've suffered so
+you won't have to.
+
+THIS PROCEDURE COMES WITH ABSOLUTELY NO WARRANTY. I ACCEPT NO LIABILITY.
+USE THIS AT YOUR OWN RISK. (I hate to have to say that, but... people
+gonna people.)
+
+Okay, so setting up a share on unraid (that accesses the underlying bare 
+metal raid drives) isn't hard, it's just that the folks at Lime haven't taken 
+the time to create a step-by-step how-to that walks you through the process.
+
+One of the problems is that Uraid has a small bug that hasn't been corrected
+to my knowledge (if wrong, let me know) - once your VM is set up, adding ANYTHING 
+to it afterwards can (and by can, I mean WILL) create bus conflicts because their 
+helper script doesn't review which busses are already in use.
+
+Generally, when creating a share, you would think that you just type the share 
+location and the share tag into the form and BOOM, the darned thing would be set 
+up for you to access within your virtual (It would be nice if it automagically 
+created a device or mount for you, but I know, that's asking for far too much).
+
+So here's what you need to do:
+
+CREATE A SHARE FROM INITIAL VM CREATION:
+
+1.  Create your share.
+    Go to the shares tab and set up a share - not a problem.
+    I created the following share: /mnt/user/VM_share
+    
+2.  Now, edit your VM. In the form (If you are seeing XML, just click the "XML View"
+    icon that will be top right of the page, just below the banner). 
+
+3.  Scroll down the page until you see the "Unraid Share" area.
+
+4.  Here, you will add the location of the share you would like to access.
+    Since I set my share up at /mnt/user/VM_share, I can either manually
+    type it in, or I can slect it from the drop-down menu
+
+5.  Now, add teh "tag" that you will want to use to identify the share when
+    you set it up inside of your VM.
+    I used the tag '/VM_Share' 
+
+6.  Okay, now that's all set up, access your VM to complete the rest.
+
+7.  Now once inside your VM, the rest is simple. First, create a mount directory.
+    I used mkdir /SHARE because that seemed a good idea. Now, using sudo, simply type
+    the following command and boom, you're in (or should be).
+
+    EXAMPLE: mount -t 9p -o trans=virtio [mount tag] [mount point] -oversion=9p2000.L
+    MY COMMAND: mount -t 9p -o trans=virtio /VM_Share /SHARE -oversion=9p2000.L
+
+    See http://wiki.qemu.org/Documentation/9psetup for more info
+
+8.  So now you have access, but it won't persist on reboot unless you update your 
+    /etc/fstab. So, refer to UPDATING FSTAB, below.
+
+
+CREATE A SHARE USING ALREADY EXISTING VM:
+
+(NOTE: You can choose to use the form as outlined in the section above. I am using the XML 
+in order to help llustrate what you are looking for, specifically what needs changed, and 
+why those changes need made. If you do use the form view, do that, then go to #3 below,
+specifically the part that speaks about changing the bus address.)
+
+1.  Create your share.
+    Go to the shares tab and set up a share - not a problem.
+    I created the following share: /mnt/user/VM_share
+    
+2.  Now, edit your VM. In the XML (If you are seeing the form view, just click the "Form View"
+    icon that will be top right of the page, just below the banner). This will bring you to
+    XML View.
+
+3.  Scroll down the page until you see the "<interface type='bridge'>" area. We're going to add
+    a section here, since this is the location that the form generator places the XML into 
+    normally (in the hopes that things won't get screwed up later). 
+    
+4.  Now, you will want to past the following XML just before the "<interface type='bridge'>"
+    code section that should be there (assuming you have a bridge configured - your mileage
+    may vary), changing your source and target directories to match what you set up when 
+    creating your share.
+
+    <filesystem type='mount' accessmode='passthrough'>
+      <source dir='/mnt/disk1/VM_share/'/>
+      <target dir='/VM_Share'/>
+      <alias name='fs0'/>
+      <address type='pci' domain='0x0000' bus='0x01' slot='0x00' function='0x0'/>
+    </filesystem>
+
+5.  Once, you've pasted the code, you're going to have to make one more change: you will 
+    probably have to modify the <address type ... bus=0x01.../> because it's highly probable
+    that the bus is already in use (this is where the Unraid form creates a problem, as it
+    assumes the bus should be 0x05 - or whatever depending on your config, duplicating another
+    bus that is probably in use.)
+    
+    So, you will need to look through your configuration, checking to see what bus addresses 
+    are used, and then pick a number 1 higher and use that. Is this the most correct process
+    to fix this issue? Probably not. But I've not yet had the time nor inclination to study
+    that specific issue yet. If anyone knows better, please let me know and I can integrate
+    your suggestion.
+
+6.  Okay, now that's all set up, access your VM to complete the rest.
+
+7.  Now once inside your VM, the rest is simple. First, create a mount directory.
+    I used mkdir /SHARE because that seemed a good idea. Now, using sudo, simply type
+    the following command and boom, you're in (or should be).
+
+    EXAMPLE: mount -t 9p -o trans=virtio [mount tag] [mount point] -oversion=9p2000.L
+    MY COMMAND: mount -t 9p -o trans=virtio /VM_Share /SHARE -oversion=9p2000.L
+
+    See http://wiki.qemu.org/Documentation/9psetup for more info
+
+8.  So now you have access, but it won't persist on reboot unless you update your 
+    /etc/fstab. So, refer to UPDATING FSTAB, below.
+
+
+UPDATING YOUR FSTAB (TESTED: UBUNTU 18.04):
+
+1.  Once you've completed either of the processes above and you have verified that your
+    share is up and working properly, you will probably want to make this share persist 
+    across reboots.
+
+2.  First, you need to make sure that qemu's 9p modules are properly loaded after boot
+    to allow for fstab to properly access the device. To do this, you will need to edit
+    /etc/initramfs-tools/modules adding the following to that config file:
+
+        9p
+        9pnet
+        9pnet_virtio
+
+    NOTE: There is some suggestion that you will only need to add the 9pnet_virtio
+    module to initramfs, but I haven't had the time to test that yet. Let me know if 
+    you get this to work without the others and I will modify the process.
+
+3.  Once, you've saved those changes, run sudo update-initramfs -u to update the initramfs
+    which might take a little bit of time to run.
+    
+4.  When initramfs has finished updating, it's now time to edit your /etc/fstab, adding 
+    the following line (modified for your specific share):
+    
+    /VM_Share /SHARE 9p trans=virtio,version=9p2000.L,nobootwait,rw,_netdev    0  0
+
+5.  Now, to test everything out, run sudo mount-a. You should see no errors. If no errors,
+    you should now be able to reboot with your share persisting.
+
+reference for mounting via fstab see:
+https://superuser.com/questions/502205/libvirt-9p-kvm-mount-in-fstab-fails-to-mount-at-boot-time/536352#536352
