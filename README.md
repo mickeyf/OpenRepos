@@ -3,6 +3,10 @@ My Open Repository of Things to Share
 <hr>
 <br><br>
   
+- Mounting samba shares in a virtual is an easy way to gain access to a repository when developing
+  (and other reasons). In how to mount a samba share with cifs (UBUNTU), I show you how:<br>
+  [VMs_and_SAMBA_shares](OpenRepos/VMs_and_SAMBA_shares)
+
 - Dealing with Unraid, trying to set up a share for use with a VM is easy. And I show you how:<br>
   How_To_Set_Up_Shared_Drive_UNRAID
   
