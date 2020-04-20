@@ -21,17 +21,19 @@ My Open Repository of Things to Share
   [elegantTestWhetherArgExists.sh](elegantTestWhetherArgExists.sh)
  
 - Check to see whether we have updates (and security updates) available:<br>
-  (yeah, I know apt does this and drops it into the motd, but what if I want to check what's currently there for some reason?)<br>
+  (yeah, I know apt does this and drops it into the motd, but what if I want to check what's 
+  currently there for some reason?)<br>
   [aptListNumberPackagesUpgradeable.sh](aptListNumberPackagesUpgradeable.sh)
   
  - Pull uname data, format it, and use lables from a file:<br>
    [workingWithUname.sh](workingWithUname.sh)
    
-<br><br><br><br>
+<br><br>
 ##### If you see something here you like, feel free to use it
 (subject to the GNU GPL)
 
-I'm good if you have suggestions - especially if it makes the programs run faster or more elegantly.
+If you have suggestions, let me know. I'd love to hear them - especially if it makes the programs
+run faster or more elegantly.
 
 (My ego is used to being knocked down - I'm married.)
 <br><br><br><br>    
