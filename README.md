@@ -5,25 +5,26 @@ My Open Repository of Things to Share
   
 - Mounting samba shares in a virtual is an easy way to gain access to a repository when developing
   (and other reasons). In how to mount a samba share with cifs (UBUNTU), I show you how:<br>
-  [VMs_and_SAMBA_shares](OpenRepos/VMs_and_SAMBA_shares)
+  [VMs_and_SAMBA_shares](VMs_and_SAMBA_shares)
 
 - Dealing with Unraid, trying to set up a share for use with a VM is easy. And I show you how:<br>
-  How_To_Set_Up_Shared_Drive_UNRAID
+  [How_To_Set_Up_Shared_Drive_UNRAID](How_To_Set_Up_Shared_Drive_UNRAID)
   
 - When we have multiple network interfaces, how we quickly determine (1) what interface we 
   are using to reach the internet (or that network), (2) what the IP address is for that interface,
   and (3) what our subnet masking is, using the fewest lines of code possible?<br>
-  determineHowWeReachedInternet.sh  
+  [determineHowWeReachedInternet.sh](determineHowWeReachedInternet.sh)  
   
 - Test whether an argument has been sent to the script:<br>
-  elegantTestWhetherArgExists.sh
+  [elegantTestWhetherArgExists.sh](elegantTestWhetherArgExists.sh)
  
 - Check to see whether we have updates (and security updates) available:<br>
   (yeah, I know apt does this and drops it into the motd, but what if I want to check what's currently there for some reason?)<br>
-  aptListNumberPackagesUpgradeable.sh
+  [aptListNumberPackagesUpgradeable.sh](aptListNumberPackagesUpgradeable.sh)
   
  - Pull uname data, format it, and use lables from a file:<br>
-   workingWithUname.sh
+   [workingWithUname.sh](workingWithUname.sh)
+   
 <br><br><br><br>
 ##### If you see something here you like, feel free to use it
 (subject to the GNU GPL)
