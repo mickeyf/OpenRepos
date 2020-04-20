@@ -1,4 +1,8 @@
-#How to mount a samba share with cifs (UBUNTU)
+# Copyright (C) 2020 Mickey Fox
+# mike@cmkconsulting.com
+
+# VMs_and_SAMBA_shares
+# How to mount a samba share with cifs (UBUNTU)
 
 1. apt-get install cifs-utils
 
