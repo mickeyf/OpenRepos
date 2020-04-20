@@ -1,0 +1,26 @@
+#How to mount a samba share with cifs (UBUNTU)
+
+1. apt-get install cifs-utils
+
+2. Create a directory for your local mountpoint.
+
+3. Create a credentials file (for instance: "cifs.credential.file") for cifs to use which contains:
+
+	user=<share user name>
+	password=<password>
+	workgroup=<if you are set up for workgroups>
+
+4. now issue the command (requires root priv):
+
+	mount.cifs //<hostname_or_ip>/<cifs_share> <local_mountpoint>,rw,credentials=<path_to_the_credentials_file>
+
+5. Test your mount by accessing the local mountpoint directory.
+
+6. Add to fstab, if desired (for automouning on reboot, etc.)
+
+	nano /etc/fstab
+
+	add this line:
+
+	# <file system> <dir> <type> <options>                                                   <dump>  <pass>
+//WIN_SHARE_IP/share_name  /mnt/win_share  cifs  credentials=/etc/win-credentials,file_mode=0755,dir_mode=0755 0       0
