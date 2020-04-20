@@ -1,7 +1,9 @@
 # OpenRepos
 My Open Repository of Things to Share
 <hr>
-<br><br>
+  Just a little collection of scripts and guides that I made for myself, but thought might be useful
+  to others. I'm open to critique and suggestions - and if you like anything enough that you'd like 
+  to collaborate on, just let me know.<br>
   
 - Mounting samba shares in a virtual is an easy way to gain access to a repository when developing
   (and other reasons). In how to mount a samba share with cifs (UBUNTU), I show you how:<br>
