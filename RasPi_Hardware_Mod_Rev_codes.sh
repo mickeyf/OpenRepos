@@ -15,11 +15,11 @@
 # Determine specific RasPi platform based on hardware revision code
 # gathered from cpuinfo.
 
-# RasPi_Hardware_Mod_Rev_codes.sh
-
 # Requires RasPi_Hardware_Mod_Rev_codes.data (data file containg RasPi info)
 # Data and concept taken from:
 # https://www.raspberrypi-spy.co.uk/2012/09/checking-your-raspberry-pi-board-version/
+
+# RasPi_Hardware_Mod_Rev_codes.sh
 
 # Set our data file
 dataFile='RasPi_Hardware_Mod_Rev_codes.data'
