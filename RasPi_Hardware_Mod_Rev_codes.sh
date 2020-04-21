@@ -1,18 +1,28 @@
+# Copyright (C) 2020 Mickey Fox
+# mike@cmkconsulting.com
+
+# This program is free software: you can redistribute it and/or modify it under the terms
+# of the GNU General Public License as published by the Free Software Foundation, either
+# version 3 of the License, or (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+# without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License along with this program.
+#If not, see <http://www.gnu.org/licenses/>
+
 # Determine specific RasPi platform based on hardware revision code
 # gathered from cpuinfo.
 
-# Copyright 2020, Mickey Fox
-# mike@cmkconsulting.com
+# RasPi_Hardware_Mod_Rev_codes.sh
 
 # Requires RasPi_Hardware_Mod_Rev_codes.data (data file containg RasPi info)
 # Data and concept taken from:
 # https://www.raspberrypi-spy.co.uk/2012/09/checking-your-raspberry-pi-board-version/
 
-# Set our directory, so that the scripts can run relatively.
-# We will remove this once we incorporate this script into the main script.
-DIR="${BASH_SOURCE%/*}"
-if [[ ! -d "$DIR" ]]; then DIR="$PWD"; fi
-dataFile="$DIR"'/dataFiles/RasPi_Hardware_Mod_Rev_codes.data'
+# Set our data file
+dataFile='RasPi_Hardware_Mod_Rev_codes.data'
 
 # Determine Revision Code and ensure it's converted to upper case to match our data
 # then parse the data file to get our line
