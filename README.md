@@ -11,6 +11,14 @@ My Open Repository of Things to Share
 
 - Dealing with Unraid, trying to set up a share for use with a VM is easy. And I show you how:<br>
   [How_To_Set_Up_Shared_Drive_UNRAID](How_To_Set_Up_Shared_Drive_UNRAID)
+
+- So, what if you are needing to determine EXACLTY which sort of Raspberry Pi you are working with? 
+  Perhaps you are running an ansible playbook that is making a network map in order todocument which
+  devices are where. Here's a little script that ansible can push to the device that will output
+  specificly defined output data:<br>
+  [RasPi_Hardware_Mod_Rev_codes.sh](RasPi_Hardware_Mod_Rev_codes.sh)
+  REQUIRES:
+  [RasPi_Hardware_Mod_Rev_codes.data](RasPi_Hardware_Mod_Rev_codes.data)
   
 - When we have multiple network interfaces, how we quickly determine (1) what interface we 
   are using to reach the internet (or that network), (2) what the IP address is for that interface,
