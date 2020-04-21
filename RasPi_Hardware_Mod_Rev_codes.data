@@ -1,0 +1,32 @@
+# Raspberry Pi, Model and PCB Revision, with RAM and identifier using Hardware Revision Code from cpuinfo  - RasPi_Hardware_Mod_Rev_codes.data
+Model B Rev 1:256MB:0002
+Model B Rev 1 ECN0001 (no fuses, D14 removed):256MB:0003
+Model B Rev 2:256MB:0004
+Model B Rev 2:256MB:0005
+Model B Rev 2:256MB:0006
+Model A:256MB:0007
+Model A:256MB:0008
+Model A:256MB:0009
+Model B Rev 2:512MB:000d
+Model B Rev 2:512MB:000e
+Model B Rev 2:512MB:000f
+Model B+:512MB:0010
+Model B+:512MB:0013
+Model B+:512MB:900032
+Compute Module:512MB:0011
+Compute Module (Embest, China):512MB:0014
+Model A+:256MB:0012
+Model A+ (Embest, China):256MB:0015
+Model A+ (Embest, China):512MB:0015
+Pi 2 Model B v1.1 (Sony, UK):1GB:a01041
+Pi 2 Model B v1.1 (Embest, China):1GB:a21041
+Pi 2 Model B v1.2:1GB:a22042
+Pi Zero v1.2:512MB:900092
+Pi Zero v1.3:512MB:900093
+Pi Zero W:512MB:9000C1
+Pi 3 Model B (Sony, UK):1GB:a02082
+Pi 3 Model B (Embest, China):1GB:a22082
+Pi 3 Model B+ (Sony, UK):1GB:a020d3
+Pi 4 1GB (Sony, UK):1GB:a03111
+Pi 4 2GB (Sony, UK):2GB:b03111
+Pi 4 4GB (Sony, UK):4GB:c03111
