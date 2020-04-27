@@ -5,6 +5,11 @@ My Open Repository of Things to Share
   to others. I'm open to critique and suggestions - and if you like anything enough that you'd like 
   to collaborate on, just let me know.<br>
   
+- Wanna know how you can easily check your IOMMU devices to see whether they can be reset via software?
+  Use case: You need the ability to assign a specific hardware resource to a virtual outside of the 
+  hypervisor. Here's how you can do it:<br>
+  [checkIfIOMMUDeviceResettable.sh](checkIfIOMMUDeviceResettable.sh)
+
 - Mounting samba shares in a virtual is an easy way to gain access to a repository when developing
   (and other reasons). In how to mount a samba share with cifs (UBUNTU), I show you how:<br>
   [VMs_and_SAMBA_shares](VMs_and_SAMBA_shares)
