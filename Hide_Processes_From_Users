@@ -1,0 +1,110 @@
+# Copyright (C) 2020 Mickey Fox
+# mike@cmkconsulting.com
+
+# Hide_Processes_From_Users
+
+WARNING: WHENEVER YOU MAKE CHANGES TO FILESYSTEMS ALWAYS, ALWAYS, ALWAYS
+BACK UP YOUR FILES BEFORE CHANGING ANYTHING. Trust me, I've suffered so
+you won't have to.
+
+THIS PROCEDURE COMES WITH ABSOLUTELY NO WARRANTY. I ACCEPT NO LIABILITY.
+USE THIS AT YOUR OWN RISK. (I hate to have to say that, but... people
+gonna people.)
+
+System Hardening
+
+hidepid
+
+See:
+	http://man7.org/linux/man-pages/man5/proc.5.html
+	https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=0499680a42141d86417a8fbaa8c8db806bea1201
+	https://www.openwall.com/lists/kernel-hardening/2011/11/15/3
+
+For more on hardening servers generally, see:
+	https://wiki.debian.org/Hardening
+
+Stop non-root users from seeing processes.
+
+A litle background:
+
+Prior to Linux kernel 3.3, a non-root user had visibility of the /proc filesystem a pseudo-
+filesystem which provides an interface to kernel data structures - giving non-root users the
+bility to view information about processes which did not belong to them, such as where sensitive 
+information (e.g. passwords) may be included in command line arguments.
+
+Thankfully, Vasiliy Kulikov introduced the hidepid mount option for procfs in Jnuary of 2012
+which was later released in:
+
+	Linux kernel 3.3
+	Debian Wheezy 3.2 kernel
+	Red Hat Enterprise Linux 6.3 (backported to RHEL 5.9)
+	CentOS 6.3
+	Scientific Linux 6.3
+
+There are three options available to the hidepid command.
+
+From http://man7.org/linux/man-pages/man5/proc.5.html
+
+Mount options
+       The proc filesystem supports the following mount options:
+
+       hidepid=n (since Linux 3.3)
+              This option controls who can access the information in
+              /proc/[pid] directories.  The argument, n, is one of the fol‐
+              lowing values:
+
+              0   Everybody may access all /proc/[pid] directories.  This is
+                  the traditional behavior, and the default if this mount
+                  option is not specified.
+
+              1   Users may not access files and subdirectories inside any
+                  /proc/[pid] directories but their own (the /proc/[pid]
+                  directories themselves remain visible).  Sensitive files
+                  such as /proc/[pid]/cmdline and /proc/[pid]/status are now
+                  protected against other users.  This makes it impossible
+                  to learn whether any user is running a specific program
+                  (so long as the program doesn't otherwise reveal itself by
+                  its behavior).
+
+              2   As for mode 1, but in addition the /proc/[pid] directories
+                  belonging to other users become invisible.  This means
+                  that /proc/[pid] entries can no longer be used to discover
+                  the PIDs on the system.  This doesn't hide the fact that a
+                  process with a specific PID value exists (it can be
+                  learned by other means, for example, by "kill -0 $PID"),
+                  but it hides a process's UID and GID, which could other‐
+                  wise be learned by employing stat(2) on a /proc/[pid]
+                  directory.  This greatly complicates an attacker's task of
+                  gathering information about running processes (e.g., dis‐
+                  covering whether some daemon is running with elevated
+                  privileges, whether another user is running some sensitive
+                  program, whether other users are running any program at
+                  all, and so on).
+
+Invoking hidepid:
+
+As root, you can invoke hidepid by remounting the /proc directory using the hidepid=<option> 
+argument from the above list:
+
+mount -o remount,rw,hidepid=2 /proc
+
+To enable persistance across add (or edit your /proc mount) the following line to /etc/fstab:
+
+proc    /proc    proc    defaults,hidepid=2     0     0
+
+
+Once remounted, if you selected option 2, the /proc will no longer be visible to
+non-root users,
+
+If, certain non-root users require visibility, you can add those users with the gid flag:
+
+       gid=gid (since Linux 3.3)
+              Specifies the ID of a group whose members are authorized to
+              learn process information otherwise prohibited by hidepid
+              (i.e., users in this group behave as though /proc was mounted
+              with hidepid=0).  This group should be used instead of
+              approaches such as putting nonroot users into the sudoers(5)
+              file.
+
+If you suffer some errors or issues after remounting, you might try:
+https://wiki.debian.org/Hardening#Mounting_.2Fproc_with_hidepid
