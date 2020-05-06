@@ -5,6 +5,13 @@ My Open Repository of Things to Share
   to others. I'm open to critique and suggestions - and if you like anything enough that you'd like 
   to collaborate on, just let me know.<br>
   
+- Prior to Linux kernel 3.3, a non-root user had visibility of the /proc filesystem a pseudo-
+  filesystem which provides an interface to kernel data structures - giving non-root users the
+  ability to view information about processes which did not belong to them, such as where sensitive 
+  information (e.g. passwords) may be included in command line arguments.
+  Here's how you can do it:<br>
+  [Hide_Processes_From_Users](Hide_Processes_From_Users)
+
 - Wanna know how you can easily check your IOMMU devices to see whether they can be reset via software?
   Use case: You need the ability to assign a specific hardware resource to a virtual outside of the 
   hypervisor. Here's how you can do it:<br>
