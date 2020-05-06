@@ -8,8 +8,9 @@ My Open Repository of Things to Share
 - Prior to Linux kernel 3.3, a non-root user had visibility of the /proc filesystem a pseudo-
   filesystem which provides an interface to kernel data structures - giving non-root users the
   ability to view information about processes which did not belong to them, such as where sensitive 
-  information (e.g. passwords) may be included in command line arguments.
-  Here's how you can do it:<br>
+  information (e.g. passwords) may be included in command line arguments. As of Linux kernel 3.3,
+  the hideproc mount flag was made available to help solve this issue:
+  Here's a discussion about hideproc and how to invoke it:<br>
   [Hide_Processes_From_Users](Hide_Processes_From_Users)
 
 - Wanna know how you can easily check your IOMMU devices to see whether they can be reset via software?
