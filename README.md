@@ -11,7 +11,7 @@ My Open Repository of Things to Share
   little script to modify your /etc/issue file dynamically on reboot? Now, instead of logging in to
   find the IP, you can just click on the interface console and the IP will be staring right at you - 
   then boom! off to the jumphost!<br>
-  [showIPinEtcIssue.sh]{showIPinEtcIssue.sh}
+  [showIPinEtcIssue.sh](showIPinEtcIssue.sh)
 
 - Prior to Linux kernel 3.3, a non-root user had visibility of the /proc filesystem a pseudo-
   filesystem which provides an interface to kernel data structures - giving non-root users the
