@@ -5,6 +5,13 @@ My Open Repository of Things to Share
   to others. I'm open to critique and suggestions - and if you like anything enough that you'd like 
   to collaborate on, just let me know.<br>
   
+- You know what's annoying? When you need to hit a server instance and you're not sure of it's IP 
+  address. Well, you could login through the interface and do an ip add show, but that takes time
+  and time is not something a sysadmin has a lot of. But, what if I told you that you could write a
+  little script to modify your /etc/issue file dynamically on reboot? Now, instead of logging in to
+  find the IP, you can just click on the interface console and the IP will be staring right at you - 
+  then boom! off to the jumphost!
+
 - Prior to Linux kernel 3.3, a non-root user had visibility of the /proc filesystem a pseudo-
   filesystem which provides an interface to kernel data structures - giving non-root users the
   ability to view information about processes which did not belong to them, such as where sensitive 
