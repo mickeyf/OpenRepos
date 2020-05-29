@@ -5,6 +5,17 @@ My Open Repository of Things to Share
   to others. I'm open to critique and suggestions - and if you like anything enough that you'd like 
   to collaborate on, just let me know.<br>
   
+- You ever wish you could drop a quick script into a directory and navigate it? Or maybe you need
+  a script that can drive a collection of smaller scripts as part of a larger, unified project? 
+  Well, here's my latest rabbit-hole that I created while working on an application that was, in 
+  essence, just that - a collection of bash scripts (this works with Windows-type directories with
+  spaces in the directory names). This dynamic directory script will drive bash scripts but be 
+  careful with that as those scripts are driven through use of the Linux eval command and if your
+  script variables or processes conflict... well, you get the picture. So caveat emptor. There is 
+  some documentation in the script on how to operate. If you have questions or suggestions, I'd love
+  to hear them.<br>
+  [dynamicMenu-1.0.sh] (dynamicMenu-1.0.sh)
+  
 - You know what's annoying? When you need to hit a server instance and you're not sure of it's IP 
   address. Well, you could login through the interface and do an ip add show, but that takes time
   and time is not something a sysadmin has a lot of. But, what if I told you that you could write a
