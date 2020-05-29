@@ -5,7 +5,7 @@
 # CMK Consulting Services, USA, Denmark
 # mike@cmkconsulting.com
 
-# Revision: 1.0 (FINAL)
+# Revision: 1.0a (FINAL)
 # Last Revision Date 5.29.2020
 
 # dynamicMenu-1.0.sh
@@ -23,6 +23,8 @@
 ###################################################################
 
 # 5.28.2020 Version 1.0 is fully working.
+# 5.29.2020 ver 1.0a Fixed sed / eval bug. Deleted ramdrive temporary
+#           fix. Modified documentation re same.
 
 # Drop this script in at the base of your directory, set the "beginDir"
 # Variable, and start it up. Now you will be able to walk directories
@@ -31,34 +33,15 @@
 
 # This script will handle Windows directories and filenames.
 
-# the script comes coplete with a functioning ramDrive that is operable
-# while the script is running and is self-cleaning at program exit - 
-# even if the program exist badly. The default ramDrive directory is 
-# placed in /tmp for extra safety. As for the reason behind the ramDrive,
-# see the "Known Issues" below.
-
 # Known issues: 
 
-# Currently, my regex handling of .sh files isn't working
-# well as linux doesn't generally like dealing with spaces in directory
-# and filenames. In order to get bash scripts to operate, I needed to 
-# parse the filepath and filename out to a text file, then read it back
-# in via sed as it didn't seem to want to deal with the stright filestream
-# out to the eval command without this step. The use of the eval command
-# will lead to issues of the script you try to execute uses conflicting
+# Currently, the use of the eval command can lead to issues with the 
+# execution of scripts within the program due to issues with conflicting
 # variables or processes (that being said, this can be handled program-
 # matically if you intend to use it as a driver for a larger program base
 # which was my actual intended use for the script. I intend to fix this
 # issue to allow for execution of programs within sub-shells, but I will
 # also be leaving the alternative call as an option.)
-
-# Yes, the ramDrive is chmodded to 777 (bad Mickey, no biscuit) as I was
-# receiving a "not authorized" error. Since I was in the middle of dealing
-# the work-around for the sed / eval issue noted above, I opted for 777
-# as a quick-fix in order to get that section working. Once the sed/eval
-# issue is corrected, the ramdrive can be removed, or if leaving the ram-
-# drive in, and you figure the permissions issue out before I do, let me
-# know
 
 # There is currently no support for executing other scripts (i.e. Python,
 # etc.) Eventually, I'd like to incorporate handling and execution for 
@@ -112,7 +95,7 @@ echo "B) Back to prior menu"
 echo
 read -r -p 'Select an option: ' choice
 
-[[ $choice == [Q/q] ]] && echo "Exiting" && do_remove_ramdrive && exit
+[[ $choice == [Q/q] ]] && echo "Exiting" && exit
 { [[ $choice == [B/b] ]] && [[ "${beginDir}" != "$(pwd)" ]]; }  && cd .. && do_script_housekeeping
 
 #Yes, it's a convoluted if-then that I'd like to pull together into a straight one-liner
@@ -120,13 +103,11 @@ read -r -p 'Select an option: ' choice
 if [[ $(seq 1 $lineItem) =~ $choice ]]; then
   	[[ -d "$(sed -n "${choice}p" <<< "$menuItems")" ]] && cd "$(sed -n "${choice}p" <<< "$menuItems")" && newDir=$newDir"/"$tempVar 
 	{ [[ $choice == 1 ]] && [[ -f $(sed -n "${choice}p" <<< "$menuItems") ]]; }
-  	{ [[ -f $(sed -n "${choice}p" <<< "$menuItems") ]] && execFile=$(sed -n "${choice}p" <<< "$menuItems") && \
-		sudo echo $ourPWD"/"$(sed -n "${choice}p" <<< "$menuItems") > $ramDrive"/tmp.txt" && clear \
-		&& eval $( sudo cat $ramDrive"/tmp.txt" | sed -e "s/ /\\\ /g" ) && read -p "Enter to return" && clear; }
+  	{ [[ -f $(sed -n "${choice}p" <<< "$menuItems") ]] && execFile=$(sed -n "${choice}p" <<< "$menuItems") && clear && \
+		eval $( echo $ourPWD"/"$(sed -n "${choice}p" <<< "$menuItems")  | sed -e "s/ /\\\ /g" ) && \
+		read -p "Enter to return" && clear; }
 fi
 main
 }
 
-do_create_ramdrive
 main
-do_remove_ramdrive
