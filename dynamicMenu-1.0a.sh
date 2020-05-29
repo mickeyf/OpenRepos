@@ -63,23 +63,12 @@
 baseDIR=$(realpath "$0" | sed 's|\(.*\)/.*|\1|')
 beginDir="/SHARE/DYNAMIC-MENU/MAIN MENU" # This is where we lock down to a base directory
 newDir=$beginDir
-maxRAM='100M' # Set our MAX ramDrive size, in MB
-ramDrive="/tmp/RAMDRIVE" # Set our ramdrive directory
 
 do_script_housekeeping(){
 	lineItem=0
 	menuItems=$(ls -1)
 	ourPWD=$(pwd)
 	clear
-}
-
-do_create_ramdrive(){
-	[[ ! -d $ramDrive ]] &&  sudo mkdir $ramDrive && sudo chmod 777 $ramDrive
-	[[ ! $(df | grep $ramDrive) ]] && sudo mount -t tmpfs -o size=$maxRAM tmpfs $ramDrive
-}
-
-do_remove_ramdrive(){
-	[[ -d $ramDrive ]] &&  umount $ramDrive && rm -R $ramDrive
 }
 
 main(){
