@@ -14,7 +14,7 @@ My Open Repository of Things to Share
   script variables or processes conflict... well, you get the picture. So caveat emptor. There is 
   some documentation in the script on how to operate. If you have questions or suggestions, I'd love
   to hear them.<br>
-  [dynamicMenu-1.0.sh](dynamicMenu-1.0.sh)
+  [dynamicMenu-1.0a.sh](dynamicMenu-1.0a.sh)
   
 - You know what's annoying? When you need to hit a server instance and you're not sure of it's IP 
   address. Well, you could login through the interface and do an ip add show, but that takes time
