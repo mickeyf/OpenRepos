@@ -78,7 +78,7 @@ run faster or more elegantly.
 (My ego is used to being knocked down - I'm married.)
 <br><br><br><br>    
 ###### Copyright Info
-All content in this Repository Copyright (C) 2020 Mickey Fox, or the respective copyright holders.
+All content in this Repository Copyright (C) 2020-2022 Mickey Fox, or the respective copyright holders.
 
 These programs are free software: you can redistribute them and/or modify them under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
